@@ -7,6 +7,7 @@ import { fileTypeFromFile } from "file-type";
 import { UPLOADS_DIR } from "../utils/caminhoUploads.js";
 
 const TIPOS_PERMITIDOS = {
+  jpg: ".jpg",
   jpeg: ".jpg",
   png: ".png",
   webp: ".webp",
@@ -31,13 +32,13 @@ export async function uploadImagem(request, reply) {
   );
 
   try {
+    // Salva o arquivo temporariamente
     await pipeline(
       arquivo.file,
       fs.createWriteStream(destinoTemporario)
     );
 
-    // @fastify/multipart marca "truncated" quando
-    // o arquivo passa do limite configurado.
+    // Verifica se o arquivo ultrapassou o limite configurado
     if (arquivo.file.truncated) {
       fs.unlinkSync(destinoTemporario);
 
@@ -47,7 +48,7 @@ export async function uploadImagem(request, reply) {
       });
     }
 
-    // Verifica o conteúdo real do arquivo,
+    // Verifica o conteúdo REAL do arquivo
     // e não apenas o MIME informado pelo navegador.
     const tipoReal = await fileTypeFromFile(destinoTemporario);
 
@@ -61,8 +62,10 @@ export async function uploadImagem(request, reply) {
       });
     }
 
+    // Define a extensão correta com base no conteúdo real
     const extensao = TIPOS_PERMITIDOS[tipoReal.ext];
 
+    // Gera um nome aleatório para evitar conflitos
     const nomeArquivo = `${randomUUID()}${extensao}`;
 
     const destinoFinal = path.join(
@@ -70,10 +73,14 @@ export async function uploadImagem(request, reply) {
       nomeArquivo
     );
 
-    fs.renameSync(destinoTemporario, destinoFinal);
+    // Move o arquivo temporário para o destino definitivo
+    fs.renameSync(
+      destinoTemporario,
+      destinoFinal
+    );
 
     // Em produção, usa a URL pública do backend.
-    // Localmente, continua usando o endereço da requisição.
+    // Localmente, usa o endereço da requisição.
     const baseUrl =
       process.env.PUBLIC_API_URL ||
       `${request.protocol}://${request.headers.host}`;
@@ -82,6 +89,7 @@ export async function uploadImagem(request, reply) {
       url: `${baseUrl}/uploads/${nomeArquivo}`,
     };
   } catch (erro) {
+    // Remove o arquivo temporário se algo der errado
     if (fs.existsSync(destinoTemporario)) {
       fs.unlinkSync(destinoTemporario);
     }
