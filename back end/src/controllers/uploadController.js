@@ -72,7 +72,11 @@ export async function uploadImagem(request, reply) {
 
     fs.renameSync(destinoTemporario, destinoFinal);
 
-    const baseUrl = `${request.protocol}://${request.headers.host}`;
+    // Em produção, usa a URL pública do backend.
+    // Localmente, continua usando o endereço da requisição.
+    const baseUrl =
+      process.env.PUBLIC_API_URL ||
+      `${request.protocol}://${request.headers.host}`;
 
     return {
       url: `${baseUrl}/uploads/${nomeArquivo}`,
