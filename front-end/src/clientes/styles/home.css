@@ -1,0 +1,291 @@
+:root {
+  --noir: #0d0908;
+  --noir-2: #17110d;
+  --cream: #f7f3ee;
+  --paper: #fffaf2;
+  --gold: #f7b718;
+  --gold-deep: #d99400;
+  --ink: #20130d;
+  --ember: #c81d25;
+}
+
+.home {
+  max-width: 720px;
+  margin: 0 auto;
+  padding-bottom: 110px;
+  background: var(--cream);
+  min-height: 100vh;
+  font-family: 'DM Sans', Arial, sans-serif;
+  color: var(--ink);
+}
+
+/* ---------- HERO ---------- */
+
+.hero {
+  position: relative;
+  background:
+    radial-gradient(circle at 15% -10%, rgba(247, 183, 24, 0.18), transparent 55%),
+    linear-gradient(180deg, var(--noir) 0%, var(--noir-2) 100%);
+  color: #fff;
+  padding: 26px 24px 46px;
+  overflow: hidden;
+}
+
+.hero-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero-selo {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  color: var(--gold);
+  border: 1px solid rgba(247, 183, 24, 0.4);
+  padding: 5px 10px;
+  border-radius: 30px;
+}
+
+.hero-nota {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 5px 10px;
+  border-radius: 30px;
+}
+
+.hero-logo {
+  display: block;
+  width: 132px;
+  height: auto;
+  margin: 14px auto 0;
+}
+
+.hero-sub {
+  margin: 10px 0 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+
+.hero-destaque {
+  margin-top: 22px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(247, 183, 24, 0.25);
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  backdrop-filter: blur(4px);
+}
+
+.hero-destaque span {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  color: var(--gold);
+}
+
+.hero-destaque b {
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.hero-destaque em {
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 13px;
+}
+
+/* Borda serrilhada separando o hero escuro do corpo claro */
+.hero-serrilha {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 16px;
+  background: linear-gradient(135deg, var(--cream) 50%, transparent 50%),
+    linear-gradient(-135deg, var(--cream) 50%, transparent 50%);
+  background-size: 20px 20px;
+  background-position: bottom;
+  background-repeat: repeat-x;
+}
+
+/* ---------- BUSCA ---------- */
+
+.pesquisar {
+  margin: -20px 20px 6px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--paper);
+  border: 1px solid rgba(32, 19, 13, 0.08);
+  border-radius: 16px;
+  padding: 0 16px;
+  color: #a08d7e;
+  box-shadow: 0 10px 24px rgba(20, 12, 8, 0.1);
+}
+
+.pesquisar input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 15px 0;
+  font-size: 15px;
+  background: transparent;
+  color: var(--ink);
+}
+
+/* ---------- CATEGORIAS: fichas perfuradas ---------- */
+
+.categorias {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 18px 20px 6px;
+  scrollbar-width: none;
+}
+
+.categorias::-webkit-scrollbar {
+  display: none;
+}
+
+.ficha {
+  position: relative;
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px dashed rgba(32, 19, 13, 0.25);
+  background: var(--paper);
+  color: var(--ink);
+  padding: 9px 16px 9px 20px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: 0.15s;
+}
+
+.ficha .furo {
+  position: absolute;
+  left: -1px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 1px dashed rgba(32, 19, 13, 0.25);
+}
+
+.ficha.ativa {
+  background: var(--noir);
+  border-color: var(--noir);
+  color: var(--gold);
+}
+
+.ficha.ativa .furo {
+  background: var(--noir);
+  border-color: var(--gold);
+}
+
+/* ---------- PRODUTOS ---------- */
+
+.produtos {
+  padding: 14px 20px 0;
+}
+
+.produtos-titulo {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.produtos-titulo h2 {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  font-size: 20px;
+  letter-spacing: 0.4px;
+  margin: 0;
+}
+
+.produtos-titulo span {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: #a08d7e;
+}
+
+.produtos-status {
+  color: #a08d7e;
+  text-align: center;
+  padding: 40px 0;
+  font-size: 14px;
+}
+
+.produtos-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 16px;
+}
+
+/* ---------- CARRINHO FLUTUANTE: selo carimbado ---------- */
+
+.selo-carrinho {
+  position: fixed;
+  right: 20px;
+  bottom: 22px;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--noir);
+  color: #fff;
+  border: 2px solid var(--gold);
+  border-radius: 50px;
+  padding: 13px 20px 13px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.selo-carrinho b {
+  font-family: 'Space Mono', monospace;
+  color: var(--gold);
+}
+
+.selo-carrinho-contador {
+  background: var(--gold);
+  color: var(--noir);
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  position: absolute;
+  top: -6px;
+  left: 22px;
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 42px;
+  }
+
+  .produtos-lista {
+    grid-template-columns: 1fr;
+  }
+}

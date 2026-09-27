@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "Produto" ADD COLUMN     "destaque" BOOLEAN NOT NULL DEFAULT false,
+ADD COLUMN     "tempoPreparo" INTEGER,
+ADD COLUMN     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP;

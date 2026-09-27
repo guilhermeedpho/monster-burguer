@@ -1,0 +1,155 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id         Int      @id @default(autoincrement())
+
+  nome       String
+  email      String   @unique
+  senhaHash  String
+
+  papel      String   @default("FUNCIONARIO") // ADMIN | FUNCIONARIO
+  ativo      Boolean  @default(true)
+
+  createdAt  DateTime @default(now())
+}
+
+model Categoria {
+  id        Int        @id @default(autoincrement())
+  nome      String
+  produtos  Produto[]
+}
+
+model Produto {
+  id             Int       @id @default(autoincrement())
+
+  nome           String
+  preco          Float
+
+  descricao      String?
+  imagemUrl      String?
+
+  ingredientes   String?
+  sabores        String?
+
+  disponivel     Boolean   @default(true)
+  destaque      Boolean   @default(false)
+
+  tempoPreparo   Int?
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @default(now()) @updatedAt
+
+  categoriaId   Int?
+  categoria     Categoria? @relation(fields: [categoriaId], references: [id])
+
+  itemPedidos   ItemPedido[]
+  adicionais    Adicional[]
+}
+
+model Adicional {
+  id          Int       @id @default(autoincrement())
+  nome        String
+  preco       Float
+
+  produtoId   Int
+  produto     Produto   @relation(fields: [produtoId], references: [id], onDelete: Cascade)
+}
+
+model Cliente {
+  id            Int      @id @default(autoincrement())
+
+  nome          String
+  telefone      String   @unique
+  whatsapp      String?
+  email         String?
+  cpf           String?  @unique
+
+  cep           String?
+  rua           String?
+  numero        String?
+  complemento   String?
+  bairro        String?
+  cidade        String?
+  estado        String?
+  referencia    String?
+
+  observacao    String?
+
+  createdAt     DateTime @default(now())
+
+  pedidos       Pedido[]
+}
+
+model Pedido {
+  id                Int       @id @default(autoincrement())
+
+  // Usado só pelo admin (que vai exigir login). Nunca exponha esse id
+  // em URL pública — use codigoAcompanhamento pra isso.
+  codigoAcompanhamento String @unique @default(uuid())
+
+  total             Float
+  status            String    @default("PENDENTE")
+
+  formaPagamento    String?
+  tipoEntrega       String?
+  trocoPara         Float?
+  observacao        String?
+
+  createdAt         DateTime  @default(now())
+
+  clienteId         Int
+  cliente           Cliente   @relation(fields: [clienteId], references: [id])
+
+  itens             ItemPedido[]
+}
+
+model ItemPedido {
+  id           Int      @id @default(autoincrement())
+
+  quantidade   Int
+  preco        Float
+
+  opcaoPonto        String?
+  observacao        String?
+  adicionaisEscolhidos String?
+
+  pedidoId     Int
+  pedido       Pedido   @relation(fields: [pedidoId], references: [id])
+
+  produtoId    Int
+  produto      Produto  @relation(fields: [produtoId], references: [id])
+}
+
+model Caixa {
+  id               Int      @id @default(autoincrement())
+
+  saldoInicial     Float
+  saldoFinal       Float?
+
+  status           String   @default("ABERTO")
+
+  abertoEm         DateTime @default(now())
+  fechadoEm        DateTime?
+
+  movimentacoes    MovimentacaoCaixa[]
+}
+
+model MovimentacaoCaixa {
+  id           Int      @id @default(autoincrement())
+
+  tipo         String
+  valor        Float
+  descricao    String?
+
+  createdAt    DateTime @default(now())
+
+  caixaId      Int
+  caixa        Caixa @relation(fields: [caixaId], references: [id], onDelete: Cascade)
+}

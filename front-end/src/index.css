@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  font-family: 'DM Sans', Arial, sans-serif;
+  color: #20130d;
+  background: #f7f3ee;
+  --brand-yellow: #f7b718;
+  --brand-yellow-dark: #d99400;
+  --brand-black: #090909;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; }
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+a { color: inherit; }
+
+/* Identidade Monster Burgers: preto, amarelo-dourado e branco. */
+.new-order, .save-order, .orders-heading>a, .reports-heading button, .settings-heading>button { background: var(--brand-yellow) !important; color: #161204 !important; box-shadow: 0 8px 18px rgba(247, 183, 24, .22) !important; }
+.new-order:hover, .save-order:hover, .orders-heading>a:hover, .reports-heading button:hover, .settings-heading>button:hover { background: var(--brand-yellow-dark) !important; }
+.eyebrow, .header-kicker { color: #bd8200 !important; }
+.welcome-row h1 span, .shift-card h2 span { color: #e4a400 !important; }
+.shift-card { background: #111 !important; }
+.shift-card:after { border-color: #f7b718 !important; }
+.shift-card .eyebrow, .shift-card a { color: #f7b718 !important; }
+.progress i { background: #f7b718 !important; }

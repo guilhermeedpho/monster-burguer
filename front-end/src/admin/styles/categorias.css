@@ -1,0 +1,82 @@
+.categorias {
+  padding: 30px;
+}
+
+.categorias-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.categorias-topo h1 {
+  margin: 0;
+  font-size: 30px;
+}
+
+.categorias-topo p {
+  color: #777;
+  margin-top: 5px;
+}
+
+.btn-novo {
+  background: #ff6b00;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.btn-novo:hover {
+  background: #e65c00;
+}
+
+.pesquisa {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+}
+
+.tabela-categorias {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,.08);
+}
+
+.tabela-categorias th {
+  background: #111;
+  color: white;
+  padding: 15px;
+  text-align: left;
+}
+
+.tabela-categorias td {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.tabela-categorias tr:hover {
+  background: #fafafa;
+}
+
+.tabela-categorias button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.tabela-categorias button:hover {
+  transform: scale(1.15);
+}

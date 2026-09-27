@@ -1,0 +1,125 @@
+.passo-page {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: #f7f3ee;
+  padding-bottom: 100px;
+  font-family: 'DM Sans', Arial, sans-serif;
+  color: #20130d;
+}
+
+.passo-logo {
+  display: block;
+  width: 88px;
+  height: auto;
+  margin: 24px auto 0;
+}
+
+.passo-form {
+  padding: 4px 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.passo-form label {
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b5847;
+}
+
+.passo-form label svg {
+  display: none;
+}
+
+.passo-form input {
+  border: 1px solid rgba(32, 19, 13, 0.15);
+  border-radius: 10px;
+  padding: 13px 14px;
+  font-size: 15px;
+  outline: none;
+  background: #fffaf2;
+  color: #20130d;
+  font-family: inherit;
+}
+
+.passo-form input:focus {
+  border-color: #f7b718;
+}
+
+.passo-aviso {
+  color: #9c8878;
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 4px 0 0;
+}
+
+.opcoes-entrega {
+  display: flex;
+  gap: 10px;
+}
+
+.opcoes-entrega button {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(32, 19, 13, 0.15);
+  background: #fffaf2;
+  color: #20130d;
+  padding: 16px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.opcoes-entrega button.ativa {
+  background: #0d0908;
+  border-color: #0d0908;
+  color: #f7b718;
+}
+
+.endereco-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.endereco-grid .full {
+  grid-column: 1 / -1;
+}
+
+.btn-continuar {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 20px;
+  width: calc(100% - 40px);
+  max-width: 440px;
+  background: #f7b718;
+  color: #0d0908;
+  border: none;
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 12px 26px rgba(20, 12, 8, 0.25);
+}
+
+.btn-continuar:hover {
+  background: #d99400;
+}
+
+.btn-continuar:disabled {
+  opacity: 0.6;
+}

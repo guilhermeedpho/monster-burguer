@@ -1,0 +1,26 @@
+.layout{
+    min-height:100vh;
+    background:#f7f3ee;
+}
+
+.layout-main{
+    margin-left:320px;
+    min-height:100vh;
+    transition:.3s;
+}
+
+.layout-content{
+    padding:32px 38px;
+}
+
+@media(max-width:800px){
+
+.layout-main{
+    margin-left:80px;
+}
+
+.layout-content{
+    padding:24px 20px;
+}
+
+}
